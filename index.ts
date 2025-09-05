@@ -40,4 +40,56 @@ const minAge = (age: number = 18): boolean => {
   return false;
 };
 
-console.log(minAge(1));
+// Void type -> it is to denote the absence of any value, often used with functions
+const printMessage = (message: string): void => {
+  console.log(`This is my ${message}`);
+};
+
+// Never -> somewhat like the any keyword, used to denote that the function will not return anything or that the variable can never have any value
+// when to use the never keyword
+// A function that has an infinite loop
+// A function that always throws an error
+// A variable that can never have a value
+// const infiniteLoop = (): never => {
+//   while (true) {}
+// };
+
+// Arrays -> object that can store multiple data values of the same type
+
+const numbers: number[] = [1, 2, 3, 4, 5];
+
+const numbersWeird: Array<number> = [1, 2, 3, 4, 5];
+
+console.log(numbers, numbersWeird);
+
+const items: string[] = [];
+
+items.push("keyboard");
+console.log(items);
+
+// Multi dimensional arrays -> arrays of arrays
+const matrix: number[][] = [
+  [1, 2, 3],
+  [4, 5, 6],
+];
+
+console.log(matrix);
+
+// objects -> collection of propoerties make up an object
+// key - value pairs
+// Properties of objects have specific types, the object itself can have a type
+// Often it is described using a type or an interface alias
+
+const person: customType = {
+  name: "Div",
+  age: 23,
+};
+
+console.log(person.name, person.age);
+
+// type aliases
+// a way to create custom types and initialising them in a meaningful way
+type customType = {
+  name: string;
+  age: number;
+};
