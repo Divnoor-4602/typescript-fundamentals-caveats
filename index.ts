@@ -243,3 +243,88 @@ console.log(
 );
 
 // Interfaces
+// Defines a contract for the shape of an object
+// Enforces a structure
+// also can describe shape of classes and functions
+interface Vehicle {
+  start(): void;
+  stop(): void;
+}
+
+// Class can implement the interface
+class CCar implements Vehicle {
+  start(): void {
+    console.log("Car is starting...");
+  }
+
+  stop(): void {
+    console.log("Car is stopping...");
+  }
+}
+
+// Usage example
+const myCar = new CCar();
+myCar.start(); // Output: "Car is starting..."
+myCar.stop(); // Output: "Car is stopping..."
+
+interface Song {
+  songName: string;
+  artist: string;
+  printSongInfo(songName: string, artist: string): string;
+}
+
+const song1: Song = {
+  songName: "natural",
+  artist: "imaginedragginballs",
+  printSongInfo: (songName, artist) => {
+    return `${songName} by ${artist}`;
+  },
+};
+
+console.log(song1);
+
+interface MovieDetails {
+  readonly name: string;
+  ratings: number;
+  printMovieInfo(
+    name: string,
+    price: number,
+    ratings: number
+  ): string | undefined;
+}
+
+// defining an object with a movie interface
+const movie: MovieDetails = {
+  name: "Oppenheimer",
+  ratings: 9.8,
+  printMovieInfo: (name, price, ratings) => {
+    return `${name} ${ratings} ${price}`;
+  },
+};
+
+console.log(movie.printMovieInfo(movie.name, 200, movie.ratings));
+
+// Declaration merging in interfaces
+// Once an interface has been made, it cannot be directly modified, however, ts allows to perform
+// declaration merging or interface extensions which is often misconstrued as "re-opening"
+
+// Declaaration merging means extending an exisitng declaration
+// add a new property or method to an interface
+interface DCar {
+  brand: string;
+  start(): void;
+}
+
+interface DCar {
+  model: string;
+  stop(): void;
+}
+
+const dcar: DCar = {
+  brand: "maruti",
+  model: "suzuki",
+  start: () => console.log("starting..."),
+  stop: () => console.log("stopping..."),
+};
+
+console.log(dcar);
