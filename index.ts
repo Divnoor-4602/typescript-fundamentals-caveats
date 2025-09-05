@@ -3,7 +3,7 @@
 // Annotations -> allows to catch errors to specify the types of values for the data
 
 // strings
-const myName: string = "Divnoor";
+let myName: string = "Divnoor";
 
 // number
 const myNumber: number = 12;
@@ -155,3 +155,21 @@ const me: TProfessorAndStudent = {
 };
 
 console.log(me);
+
+// Literal types -> have to pick from the options given in the literals could be string, numver or boolean
+let newName: "div" | 12 = 12;
+
+newName = "div";
+
+console.log(newName);
+
+// Tuple -> Tuple is a type that represents an array with a FIXED NUMBER OF ELEMENTS
+// each element can have a DIFFERENT TYPE but the order of types for a tuple definition corresponds to the order of the values in the actual array
+let myTuple: [string, number] = ["divnoor", 12];
+
+console.log(myTuple);
+
+// Destructuring
+let [huh, age] = myTuple;
+
+console.log(huh, age);
