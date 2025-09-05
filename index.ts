@@ -99,17 +99,17 @@ type customType = {
 // Readonly
 // if a property in type is readonly, it cannot be reassigned
 
-type User = {
-  name: string;
-  readonly location: string;
-};
+// type User = {
+//   name: string;
+//   readonly location: string;
+// };
 
-const user: User = {
-  name: "div",
-  location: "chandigarh",
-};
+// const user: User = {
+//   name: "div",
+//   location: "chandigarh",
+// };
 
-console.log(user.location);
+// console.log(user.location);
 
 // Intersection types
 // Combines multiple types into a single type such that all the methods and properties of both the types are present in the resulting type
@@ -173,3 +173,30 @@ console.log(myTuple);
 let [huh, age] = myTuple;
 
 console.log(huh, age);
+
+// Enums
+// way to define a set of named constants
+// allows you to define a collection of related values that can be used interchangeably
+// automatically assings keys like 0 -> Sunny
+
+// OOPS in TS
+// Class in typescript
+
+// you can annotate class property with a type in ts
+class PersonNew {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const john = new PersonNew("John", 20);
+console.log(john.name);
+
+// Access modifiers -> in JS there is no concept of access modifiers
+// in TS, these can be used to access modifiers to control the visibility of class members. Access modifiers determine the ways in which class memebers
+// can be accessed withing and otuside the class
+// for js oops refer the js index file
