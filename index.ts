@@ -32,3 +32,12 @@ console.log(color);
 const addOne = (num: number): number => {
   return num + 1;
 };
+
+// provide default value in the function and return annotations
+const minAge = (age: number = 18): boolean => {
+  if (age >= 18) return true;
+
+  return false;
+};
+
+console.log(minAge(1));
