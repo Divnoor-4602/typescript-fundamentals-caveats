@@ -27,3 +27,8 @@ console.log(typeof tech);
 let color: any = "blue";
 color = 10; // no error here since any type was used instead of an annotation
 console.log(color);
+
+// Function parameters and annotations
+const addOne = (num: number): number => {
+  return num + 1;
+};
