@@ -3,29 +3,29 @@
 // Annotations -> allows to catch errors to specify the types of values for the data
 
 // strings
-let myName: string = "Divnoor";
+let basicString: string = "Divnoor";
 
 // number
-const myNumber: number = 12;
+const basicNumber: number = 12;
 
 // boolean
-const myBool: boolean = false;
+const basicBoolean: boolean = false;
 
-console.log(`${myName}, ${myNumber}, ${myBool}`);
+console.log(`${basicString}, ${basicNumber}, ${basicBoolean}`);
 
 // Type inference -> Allows the compiler to automatically determine the type of the variable based on its value
 // If you intialise a variable without a type, it will automatically try to infer it.
 
-let tech = "Typescript";
-// tech = 12 -> this gives an error since ts infered the type to be string and it expects that to be consistent
-console.log(typeof tech);
+let inferredString = "Typescript";
+// inferredString = 12 -> this gives an error since ts infered the type to be string and it expects that to be consistent
+console.log(typeof inferredString);
 
 // Any type
 // TS any type can be used to represent any type, basically having any value and it disables all type checking for that type
 // better to use specific types
 
-let color: string = "blue";
-console.log(color);
+let anyTypeExample: string = "blue";
+console.log(anyTypeExample);
 
 // Function parameters and annotations
 // const addOne = (num: number): number => {
@@ -55,36 +55,36 @@ console.log(color);
 
 // Arrays -> object that can store multiple data values of the same type
 
-const numbers: number[] = [1, 2, 3, 4, 5];
+const arrayNumbers: number[] = [1, 2, 3, 4, 5];
 
-const numbersWeird: Array<number> = [1, 2, 3, 4, 5];
+const arrayNumbersGeneric: Array<number> = [1, 2, 3, 4, 5];
 
-console.log(numbers, numbersWeird);
+console.log(arrayNumbers, arrayNumbersGeneric);
 
-const items: string[] = [];
+const arrayItems: string[] = [];
 
-items.push("keyboard");
-console.log(items);
+arrayItems.push("keyboard");
+console.log(arrayItems);
 
 // Multi dimensional arrays -> arrays of arrays
-const matrix: number[][] = [
+const arrayMatrix: number[][] = [
   [1, 2, 3],
   [4, 5, 6],
 ];
 
-console.log(matrix);
+console.log(arrayMatrix);
 
 // objects -> collection of propoerties make up an object
 // key - value pairs
 // Properties of objects have specific types, the object itself can have a type
 // Often it is described using a type or an interface alias
 
-const person: customType = {
+const objectPerson: customType = {
   name: "Div",
   age: 23,
 };
 
-console.log(person.name, person.age);
+console.log(objectPerson.name, objectPerson.age);
 
 // type aliases
 // a way to create custom types and initialising them in a meaningful way
@@ -126,14 +126,14 @@ type Employee = {
 
 type TPersonAndEmployee = Person & Employee;
 
-const rishabh: TPersonAndEmployee = {
+const intersectionExample: TPersonAndEmployee = {
   name: "Rishabh",
   age: 23,
   id: 1,
   role: "CEO",
 };
 
-console.log(rishabh);
+console.log(intersectionExample);
 
 // Union of types -> combines multiple types into a single type where the properties of all the types combined may or may not be there
 // All properties DO NOT NEED TO BE THERE
@@ -149,30 +149,30 @@ type Professor = {
 
 type TProfessorAndStudent = Student | Professor;
 
-const me: TProfessorAndStudent = {
+const unionExample: TProfessorAndStudent = {
   name: "Hello",
   courseCode: 12,
 };
 
-console.log(me);
+console.log(unionExample);
 
 // Literal types -> have to pick from the options given in the literals could be string, numver or boolean
-let newName: "div" | 12 = 12;
+let literalExample: "div" | 12 = 12;
 
-newName = "div";
+literalExample = "div";
 
-console.log(newName);
+console.log(literalExample);
 
 // Tuple -> Tuple is a type that represents an array with a FIXED NUMBER OF ELEMENTS
 // each element can have a DIFFERENT TYPE but the order of types for a tuple definition corresponds to the order of the values in the actual array
-let myTuple: [string, number] = ["divnoor", 12];
+let tupleExample: [string, number] = ["divnoor", 12];
 
-console.log(myTuple);
+console.log(tupleExample);
 
 // Destructuring
-let [huh, age] = myTuple;
+let [tupleName, tupleAge] = tupleExample;
 
-console.log(huh, age);
+console.log(tupleName, tupleAge);
 
 // Enums
 // way to define a set of named constants
@@ -193,10 +193,53 @@ class PersonNew {
   }
 }
 
-const john = new PersonNew("John", 20);
-console.log(john.name);
+const classExample = new PersonNew("John", 20);
+console.log(classExample.name);
 
 // Access modifiers -> in JS there is no concept of access modifiers
 // in TS, these can be used to access modifiers to control the visibility of class members. Access modifiers determine the ways in which class memebers
 // can be accessed withing and otuside the class
 // for js oops refer the js index file
+// public, private, protected
+
+// public can be accessed outside and within the class
+// private -> can only be accessed within the class, not accessible even with extends inheritance
+// protected -> can be used within the class and inherited classes using the keyword extends
+
+class Person12 {
+  public first: string;
+  public last: string;
+  private age: number;
+  protected role: string;
+
+  constructor(first: string, last: string, age: number, role: string) {
+    this.first = first;
+    this.last = last;
+    this.age = age;
+    this.role = role;
+  }
+
+  // Public method to access private age property
+  public getAge(): number {
+    return this.age;
+  }
+
+  // Public method to get full name
+  public getFullName(): string {
+    return `${this.first} ${this.last}`;
+  }
+}
+
+class Work extends Person12 {
+  constructor(first: string, last: string, age: number, role: string) {
+    super(first, last, age, role);
+  }
+}
+
+let accessModifierExample = new Work("div", "noor", 20, "trach");
+console.log(
+  "Worker class: private and protected test, ",
+  accessModifierExample
+);
+
+// Interfaces

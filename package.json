@@ -7,7 +7,7 @@
   "scripts": {
     "start": "ts-node index.ts",
     "dev-js": "node index.js",
-    "dev-ts": "node index.ts",
+    "dev-ts": "ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
