@@ -1,0 +1,3 @@
+// Lexical scoping
+
+// Closure

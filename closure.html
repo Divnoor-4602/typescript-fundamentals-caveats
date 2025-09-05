@@ -1,0 +1,33 @@
+<!-- Lexical scope -> inner functions can access variables of the outer function -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+    <script>
+      function clickHandler(color) {
+        return function () {
+          document.body.style.backgroundColor = `${color}`;
+        };
+      }
+      // this works because the internal function has lexical scoping
+      document.getElementById("orange").onclick = clickHandler("orange");
+      document.getElementById("green").onclick = clickHandler("green");
+    </script>
+  </body>
+</html>
+
+<!-- think of closure in this way
+ The makeFunc does not execure the inner function that has the scope of the outer function and thus can access the name variable
+ When the makeFunc() has been executed the scope is gone
+ and the reference to displayname is attatched to myFunc
+ so when the reference is give to variable, not just the function is given but the scope attatched to that function is sent as well because
+ of lexical scoping
+ The entire lexical scope is sent so name is still going to be console logged
+  -->
